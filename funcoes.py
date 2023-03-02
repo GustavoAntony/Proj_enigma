@@ -1,6 +1,7 @@
 import numpy as np
 ALFABETO = 'abcdefghijklmnopqrstuvwxyz '
 TAMANHO_ALFABETO = len(ALFABETO)
+MATRIZ_ALFABETO = np.identity(TAMANHO_ALFABETO,dtype=int)
 
 #FUNÇÕES ÚTEIS
 # def one_hot_individual(letra):
@@ -14,14 +15,13 @@ TAMANHO_ALFABETO = len(ALFABETO)
 #             if letra == alfabeto[a]:
 
 def para_one_hot(string):
-    matriz_alfabeto = np.identity(TAMANHO_ALFABETO,dtype=int)
     contador = 0
     for letra in string:
         if letra in ALFABETO:
             if contador == 0:
-                matriz_palavra = np.reshape(matriz_alfabeto[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
+                matriz_palavra = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
             else:
-                array2 = np.reshape(matriz_alfabeto[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
+                array2 = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
                 matriz_palavra = np.concatenate((matriz_palavra,array2),axis=0)
         contador = 1
     matriz_palavra = matriz_palavra.T
