@@ -29,7 +29,42 @@ def para_string(matriz):
 
 mama = para_one_hot("gustavo")
 print(para_string(mama))
+
+
+
+
+permutada = np.random.permutation(MATRIZ_ALFABETO)
+print(permutada)
+
+def cifrar(string, p):
+    one_hot = para_one_hot(string)
+    cifrada = p @ one_hot
+    resultado = para_string(cifrada)
+    return resultado
+
+
+
+
+def de_cifrar(string_cifrada, p):
+
+    string_one_hot = para_one_hot(string_cifrada)
+    p_inv = np.linalg.inv(p)
+    de_cifrada = p_inv @ string_one_hot
+    string = para_string(de_cifrada)
+
+    return string
+
+
+
+
+print(cifrar('gustavo', permutada))
+print(de_cifrar(cifrar('gustavo', permutada),permutada))
+
     
+
+
+
+
     
 
 
