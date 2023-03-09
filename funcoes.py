@@ -57,6 +57,8 @@ def de_cifrar(string_cifrada, p):
 
 
 
+
+
 print(cifrar('gustavo', permutada))
 print(de_cifrar(cifrar('gustavo', permutada),permutada))
 
