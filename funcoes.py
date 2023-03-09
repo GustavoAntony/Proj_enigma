@@ -1,5 +1,5 @@
 import numpy as np
-ALFABETO = 'abcdefghijklmnopqrstuvwxyz '
+ALFABETO = 'abcdefghijklmnopqrstuvwxyz ,.@:-_'
 TAMANHO_ALFABETO = len(ALFABETO)
 MATRIZ_ALFABETO = np.identity(TAMANHO_ALFABETO,dtype=int)
 
@@ -58,8 +58,6 @@ def enigma(mensagem, p, e):
         else:
             letra = np.reshape((np.linalg.matrix_power(e,i) @ p @ matriz[i]),(-1,TAMANHO_ALFABETO))
             matriz_palavra = np.concatenate([matriz_palavra,letra])
-    
-    print(matriz_palavra.T)
     matriz_palavra = para_string(matriz_palavra.T)
     return matriz_palavra
 
