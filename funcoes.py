@@ -67,10 +67,16 @@ def de_enigma(mensagem, p, e):
     matriz = para_one_hot(mensagem)
     matriz = matriz.T
     p_inv = np.linalg.inv(p)
+    e_inv = np.linalg.inv(e)
     for i in range(len(matriz)):
         if i == 0:
             letra = np.reshape((p_inv @matriz[i]), (-1,TAMANHO_ALFABETO))
-            print(letra)
+            matriz_palavra = letra
+        else:
+            letra = np.reshape((p_inv @ np.linalg.matrix_power(e_inv,i) @ matriz[i]),(-1,TAMANHO_ALFABETO))
+            matriz_palavra = np.concatenate([matriz_palavra,letra])
+    matriz_palavra = para_string(matriz_palavra.T)
+    return matriz_palavra
     
 
 permutada = np.random.permutation(MATRIZ_ALFABETO)
