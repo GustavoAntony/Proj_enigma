@@ -49,23 +49,28 @@ def de_cifrar(string_cifrada, p):
     return string
 
 def enigma(mensagem, p, e):
-
     matriz = para_one_hot(mensagem)
     matriz = matriz.T
-
-    
-
-    for i in range(len(matriz.T)):
+    for i in range(len(matriz)):
         if i ==0:
-            letra = p @ matriz[i]
+            letra = np.reshape((p @ matriz[i]),(-1,TAMANHO_ALFABETO))
             matriz_palavra = letra
         else:
-            letra = np.linalg.matrix_power(e,i) @ p @ matriz[i]
-            matriz_palavra = np.concatenate((matriz_palavra,letra),axis=0)
-        print(matriz_palavra)
-        
+            letra = np.reshape((np.linalg.matrix_power(e,i) @ p @ matriz[i]),(-1,TAMANHO_ALFABETO))
+            matriz_palavra = np.concatenate([matriz_palavra,letra])
+    
+    print(matriz_palavra.T)
+    matriz_palavra = para_string(matriz_palavra.T)
+    return matriz_palavra
 
-    pass
+def de_enigma(mensagem, p, e):
+    matriz = para_one_hot(mensagem)
+    matriz = matriz.T
+    p_inv = np.linalg.inv(p)
+    for i in range(len(matriz)):
+        if i == 0:
+            letra = np.reshape((p_inv @matriz[i]), (-1,TAMANHO_ALFABETO))
+            print(letra)
     
 
 permutada = np.random.permutation(MATRIZ_ALFABETO)
@@ -76,8 +81,9 @@ e = np.random.permutation(permutada)
 # print(permutada)
 # print(cifrar('gustavo', permutada))
 # print(de_cifrar(cifrar('gustavo', permutada),permutada))
-print("gustavo",permutada,e)
-
+nwp = enigma("gustavo",permutada,e)
+print(nwp)
+print(de_enigma(nwp,permutada,e))
 
 
     
