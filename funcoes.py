@@ -1,5 +1,5 @@
 import numpy as np
-ALFABETO = 'abcdefghijklmnopqrstuvwxyz ,.@:-_'
+ALFABETO = '''ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÇçáéíóúãõàèìòù123456789 "'!@#$%¨&*()_+=§[]:;/>.<\|,?'''
 TAMANHO_ALFABETO = len(ALFABETO)
 MATRIZ_ALFABETO = np.identity(TAMANHO_ALFABETO,dtype=int)
 
@@ -9,6 +9,13 @@ def para_one_hot(string):
     contador = 0
     for letra in string:
         if letra in ALFABETO:
+            if contador == 0:
+                matriz_palavra = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
+            else:
+                array2 = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
+                matriz_palavra = np.concatenate((matriz_palavra,array2),axis=0)
+        else:
+            letra = "?"
             if contador == 0:
                 matriz_palavra = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
             else:
@@ -85,7 +92,7 @@ e = np.random.permutation(permutada)
 # print(permutada)
 # print(cifrar('gustavo', permutada))
 # print(de_cifrar(cifrar('gustavo', permutada),permutada))
-nwp = enigma("gustavo",permutada,e)
+nwp = enigma("O gustavo é um cara muito legaç",permutada,e)
 print(nwp)
 print(de_enigma(nwp,permutada,e))
 
