@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from funcoes import * 
+from enigma.enigma import * 
 
 
 app = Flask(__name__)

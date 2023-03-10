@@ -1,16 +1,21 @@
 import numpy as np
-ALFABETO = 'abcdefghijklmnopqrstuvwxyz ,.@:-_'
+ALFABETO = '''ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÇçáéíóúãõàèìòù123456789 "'!@#$%¨&*()_+=§[]:;/>.<\|,?'''
 TAMANHO_ALFABETO = len(ALFABETO)
 MATRIZ_ALFABETO = np.identity(TAMANHO_ALFABETO,dtype=int)
-# print(MATRIZ_ALFABETO)
-import random
-import copy
+
 
 
 def para_one_hot(string):
     contador = 0
     for letra in string:
         if letra in ALFABETO:
+            if contador == 0:
+                matriz_palavra = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
+            else:
+                array2 = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
+                matriz_palavra = np.concatenate((matriz_palavra,array2),axis=0)
+        else:
+            letra = "?"
             if contador == 0:
                 matriz_palavra = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
             else:
@@ -78,29 +83,6 @@ def de_enigma(mensagem, p, e):
     matriz_palavra = para_string(matriz_palavra.T)
     return matriz_palavra
     
-# permutada = copy.deepcopy(MATRIZ_ALFABETO)
-# permutada = np.roll(permutada.T, 3)
-# e = copy.deepcopy(permutada)
-# e = np.roll(e, 3)
-# permutada = np.roll(MATRIZ_ALFABETO, 3)
-# e = np.roll(permutada, 3)
-mama = para_one_hot("gustavo")
-# print(para_string(mama))
-
-# rng = np.random.seed(3)
-# a = copy.deepcopy(MATRIZ_ALFABETO)
-permutada = np.roll(MATRIZ_ALFABETO, 3, 1)
-
-e = np.roll(permutada, 3, 1)
-
-# c =  a == b
-# print(a == b)
-# print(cifrar('gustavo', permutada))
-# print(de_cifrar(cifrar('gustavo', permutada),permutada))
-nwp = enigma("gustavo",permutada,e)
-print(nwp)
-print(de_enigma(nwp,permutada,e))
-
 
     
 
