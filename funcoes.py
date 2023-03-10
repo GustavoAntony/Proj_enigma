@@ -1,5 +1,5 @@
 import numpy as np
-ALFABETO = '''ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzáéíóúãõàèìòù "'!@#$%¨&*()_+=§[]:;/>.<\|,?'''
+ALFABETO = '''ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÇçáéíóúãõàèìòù123456789 "'!@#$%¨&*()_+=§[]:;/>.<\|,?'''
 TAMANHO_ALFABETO = len(ALFABETO)
 MATRIZ_ALFABETO = np.identity(TAMANHO_ALFABETO,dtype=int)
 
