@@ -84,6 +84,13 @@ def de_enigma(mensagem, p, e):
     return matriz_palavra
     
 
+
+
+
+
+
+
+
     
 
 
