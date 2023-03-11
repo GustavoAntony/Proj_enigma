@@ -1,3 +1,7 @@
+# Instruções gerais:
+
+Para utilizar o programa é necessário clonar o repositório e realizar a instalação das dependências com o comando 'pip install -r requirements.txt'. Logo em seguida será possível testar a api, o arquivo demo.py e nossa biblioteca também está disponível para ser baixada, as instruções detalhadas de cada caso se encontram abaixo ,nesse mesmo arquivo README.md.
+
 # Como usar os módulos dessa biblioteca : 
 
 * A função `para_one_hot(msg : str)` pode ser usada para codificar mensagens como uma matriz usando one-hot encoding
@@ -7,7 +11,9 @@
 * A função `enigma(msg : str, P : np.array, E : np.array)` faz a cifra enigma na mensagem de entrada usando o cifrador `P` e o cifrador auxiliar `E`, ambos representados como matrizes de permutação.
 * A função `de_enigma(msg : str, P : np.array, E : np.array)` recupera uma mensagem cifrada como enigma assumindo que ela foi cifrada com o usando o cifrador `P` e o cifrador auxiliar `E`, ambos representados como matrizes de permutação.
 
+# Instruções demo.py :
 
+    Para executar a demonstração do demo.py, é necessário rodar o arquivo com esse nome. Quando executado ele descreverá qual a função que está sendo executada e demonstrará a saída para cada um dos exemplos de entrada. Certifique-se de que tenha o pacote numpy instalado, caso não tenha instalado utilize o comando 'pip install numpy'. Toda apresentação será feita pelo terminal, é recomendado expandí-lo para uma melhor visualização.
 
 # Como utilizar a api :
 
@@ -31,10 +37,10 @@
 
 * A função `de_cifrar(msg : str, P : np.array)` recebe a uma mensagem cifrada e a matriz de permutação p utilizada para gerar essa mensagem. Após isso, trasnforma a mensagem em questão em one_hot, e faz uma operação entre matrizes basíca de multiplicação pela inversa de p para obter a matriz original, por exemplo, P . O = C => P-¹. P . O = P-¹ . C, sendo C a matriz da mensagem cifrada, P a matriz p e O a matriz da mensagem original. Após conseguir a matriz original ela é tranformada em uma string com a função `para_string`.
 
-* A função `enigma(msg : str, P : np.array, E : np.array)` faz um processo semelhante à função `cifrar` mas a difereça é que agora existe uma matriz de permutação auxiliar 'e' e o provesso é o seguinte: Para a primeira letra o processo é identico à função `cifrar`, e a aprtir da segunda letra começamos a usar a matriz auxiliar 'e' e a multiplicação fica E.P.O, sendo E a matriz e, P a matriz p e O a matriz da mensagem original. A para cada iteração nas letras do alfabeto é multiplicada uma vez a mais pela matriz auxiliar e. E após todo esse processo transformamos a matriz resultante em string gerando o resultado incriptado. 
+* A função `enigma(msg : str, P : np.array, E : np.array)` faz um processo semelhante à função `cifrar` mas a difereça é que agora existe uma matriz de permutação auxiliar 'e' e o processo é o seguinte: Para a primeira letra o processo é identico à função `cifrar`, e a partir da segunda letra começamos a usar a matriz auxiliar 'e' e a multiplicação fica E.P.O, sendo E a matriz e, P a matriz p e O a matriz da mensagem original. A para cada iteração nas letras do alfabeto é multiplicada uma vez a mais pela matriz auxiliar e (E^x.P.O). E após todo esse processo transformamos a matriz resultante em string gerando o resultado incriptado. 
 
 
-* A função `de_enigma(msg : str, P : np.array, E : np.array)` faz um processo semelhante à função `de_cifrar` e a diferença é que para cada letra a operação de inversão para obter a matriz original é diferente já que para gerar cada letra utilizando a função engima houve uma multiplicação à mais pela matriz auxiliar 'e'.E após seguir os passos de transformar a mensagem para one_hot e fazer a operação inversa para obter a matriz original essa matriz é transformada em texto gerando o resultado decriptado.
+* A função `de_enigma(msg : str, P : np.array, E : np.array)` faz um processo semelhante à função `de_cifrar` e a diferença é que para cada letra a operação de inversão para obter a matriz original é diferente já que para gerar cada letra utilizando a função engima houve uma multiplicação à mais pela matriz inversa da auxiliar 'e'.E após seguir os passos de transformar a mensagem para one_hot e fazer a operação inversa para obter a matriz original essa matriz é transformada em texto gerando o resultado decriptado.
 
  # Como baixar a bilbioteca utilizando o pip install :
 

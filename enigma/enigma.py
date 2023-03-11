@@ -106,7 +106,6 @@ def de_enigma(mensagem, p, e):
     #transforma essa matriz resultante em string 
     matriz_palavra = para_string(matriz_palavra.T)
     return matriz_palavra
-    
 
 
 
