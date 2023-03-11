@@ -13,7 +13,7 @@
 
 
 * A api apresenta apenas uma rota /enigma e para ela deve ser enviado um json com as seguintes chaves :
- - acao → recebe uma string cifrar ou decifirar indicando a ação desejada
+ - acao → recebe uma string "cifrar" ou "decifirar" indicando a ação desejada
  - seed → recebe um int indicando o seed(chave) para incriptar ou decriptar a mensagem, dependendo da ação escolhida.
  - mensagem → recebe uma string contendo uma mensagem, seja incriptada ou normal.
 
@@ -24,7 +24,7 @@
 # Como funcionam os métodos da biblioteca :
  * A função `para_one_hot(msg : str)` transforma cada letra do alfabeto em um array de zeros e um afim de transformar aquela sentença em uma matriz onde cada letra vira uma coluna.
 
- * A função `para_string(M : np.array)` faz a operação inversa da anterior em que pega cada coluna do array, ou seja, cada letra representada no array e transforma na caractér correspondente.
+ * A função `para_string(M : np.array)` faz a operação inversa da anterior em que pega cada coluna do array, ou seja, cada letra representada no array e transforma na caractére correspondente.
 
 * A função `cifrar(msg : str, P : np.array)` recebe uma mensagem em string, transforma em one_hot com a primeira função citada, após isso multiplica por uma matriz p que é uma matriz semelhante a matriz de alfabeto mais permutada e esse resultado da multiplicação é convertido para string usando a função `para_string`. Sendo assim, caso a matriz p troque a letra B por A na palavra "BANANA" após essa operação ficaria "ABNBNB".
 

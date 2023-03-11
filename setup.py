@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(name="enigmatico",
       version='0.1',
-      description="Apresenta funções de criptografia de decriptografia assi como a máquina enigma fazia",
+      description="Apresenta funções de criptografia de decriptografia assim como a máquina enigma fazia",
       packages=['enigma'],
       install_requires=['numpy'],
       author='Matheus e Gustavo',
