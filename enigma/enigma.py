@@ -4,16 +4,19 @@ TAMANHO_ALFABETO = len(ALFABETO)
 MATRIZ_ALFABETO = np.identity(TAMANHO_ALFABETO,dtype=int)
 
 
-
+#função responsável por converter uma string para uma matriz one hot
 def para_one_hot(string):
+    #contador é criado para verificar quando a matriz deve ser criada e quando a matriz deve ser concatenada
     contador = 0
     for letra in string:
+        #caso a letra pertença ao alfabeto, ela é tem seu shape redefinido para (1,TAMANHO_ALFABETO)
         if letra in ALFABETO:
             if contador == 0:
                 matriz_palavra = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
             else:
                 array2 = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
                 matriz_palavra = np.concatenate((matriz_palavra,array2),axis=0)
+        #caso a mensagem receba um elemento que não pertença ao alfabeto é adicionado um ponto de interrogação no lugar       
         else:
             letra = "?"
             if contador == 0:
@@ -22,14 +25,16 @@ def para_one_hot(string):
                 array2 = np.reshape(MATRIZ_ALFABETO[ALFABETO.index(letra)],(1,TAMANHO_ALFABETO))
                 matriz_palavra = np.concatenate((matriz_palavra,array2),axis=0)
         contador = 1
+    #antes de retornar a matriz é transposta para seguir o modelo (i,j) = (TAMANHO,ALFABETO,TAMANHO_PALAVRA)
     matriz_palavra = matriz_palavra.T
     return matriz_palavra
 
 
 
-
+#função que converte uma matriz para mensagem
 def para_string(matriz):
     palavra = ""
+    #para cada colu
     for coluna in matriz.T:
         i = np.where(coluna == 1)[0][0]
         palavra += ALFABETO[i]
@@ -84,11 +89,17 @@ def de_enigma(mensagem, p, e):
     return matriz_palavra
     
 
+permutada = np.random.permutation(MATRIZ_ALFABETO)
+e = np.random.permutation(permutada)
+mama = para_one_hot("gustavo")
+# print(para_string(mama))
 
-
-
-
-
+# print(permutada)
+# print(cifrar('gustavo', permutada))
+# print(de_cifrar(cifrar('gustavo', permutada),permutada))
+# nwp = enigma("O gustavo é um cara muito legaç",permutada,e)
+# print(nwp)
+# print(de_enigma(nwp,permutada,e))
 
 
     
