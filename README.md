@@ -18,13 +18,27 @@ Para utilizar o programa é necessário clonar o repositório e realizar a insta
 # Como utilizar a api :
 
 
-* A api apresenta apenas uma rota /enigma e para ela deve ser enviado um json com as seguintes chaves :
+* A api apresenta apenas uma rota "/enigma" e para ela deve ser enviado um json com as seguintes chaves :
  - acao → recebe uma string "cifrar" ou "decifirar" indicando a ação desejada
  - seed → recebe um int indicando o seed(chave) para incriptar ou decriptar a mensagem, dependendo da ação escolhida.
  - mensagem → recebe uma string contendo uma mensagem, seja incriptada ou normal.
 
 
- Assim, para incriptar uma mensagem você pode enviar ela na chave mensgem do json, e a ação cifrar na chave acao alem do seed. E para decifrar você deve enviar a mensagem incriptada na chave mensagem, a ação decifrar na chave acao e a mesma seed que foi utilizada para gerar a mensagem incriptada.
+ Assim, para incriptar uma mensagem você pode enviar ela na chave mensagem do json, e a ação cifrar na chave acao alem do seed na cahave seed. E para decifrar você deve enviar a mensagem incriptada na chave mensagem, a ação decifrar na chave acao e a mesma seed que foi utilizada para gerar a mensagem incriptada.
+
+ Um exemplo de json para enigma esperado:  
+ {
+    "seed": 1,
+    "acao": "cifrar",
+    "mensagem" : "Amo álgebra linear!"
+ }
+
+ Um exemplo de json de de_enigma esperado:
+{
+    "seed": 1,
+    "acao": "decifrar",
+    "mensagem": "?jj3taTPKYFÇMHK?>Ip"
+}
 
 
 # Como funcionam os métodos da biblioteca :
