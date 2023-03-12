@@ -13,7 +13,7 @@ Para utilizar o programa é necessário clonar o repositório e realizar a insta
 
 # Instruções demo.py :
 
-    Para executar a demonstração do demo.py, é necessário rodar o arquivo com esse nome. Quando executado ele descreverá qual a função que está sendo executada e demonstrará a saída para cada um dos exemplos de entrada. Certifique-se de que tenha o pacote numpy instalado, caso não tenha instalado utilize o comando 'pip install numpy'. Toda apresentação será feita pelo terminal, é recomendado expandí-lo para uma melhor visualização.
+Para executar a demonstração do demo.py, é necessário rodar o arquivo com esse nome. Quando executado ele descreverá qual a função que está sendo executada e demonstrará a saída para cada um dos exemplos de entrada. Certifique-se de que tenha o pacote numpy instalado, caso não tenha instalado utilize o comando 'pip install numpy'. Toda apresentação será feita pelo terminal, é recomendado expandí-lo para uma melhor visualização.
 
 # Como utilizar a api :
 
